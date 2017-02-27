@@ -1,0 +1,611 @@
+/* custom css */
+
+
+/*General Style*/
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding-top: 89px;
+    background-color: #E8E0F4;
+}
+
+p {
+    color: #9772A9;
+}
+
+ul {
+    margin-bottom: 0px;
+}
+
+
+/* Overrding Bootstrap Navigation Tab */
+
+.navbar-default.navbar-fixed-top.centered>li,
+.nav-pills.centered>li {
+    float: none;
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+}
+
+.navbar-default.navbar-fixed-top.centered,
+.nav-pills.centered {
+    text-align: center;
+}
+
+
+/*Button styles*/
+
+#add-playlist-button {
+    padding: 15px;
+    width: 94%;
+}
+
+#nav-body {
+    background: #F9F9F9;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+#nav-fixed-pos {
+    background: #F9F9F9;
+    position: fixed;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+#page-body {
+    background-color: #E8E0F4;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+#library-tab {
+    display: none;
+}
+
+#playlist-tab {
+    display: ;
+}
+
+#search-tab {
+    display: none;
+}
+
+.list-item {
+    position: relative;
+}
+
+li.list-item {
+    border-bottom: 2px solid #bbb;
+}
+
+.modal-list-item {
+    border-bottom: 0px;
+}
+
+.modal-list-item-playlist-title {
+    width: 20%;
+    padding-top: 4%;
+    padding-bottom: 4%;
+    vertical-align: middle;
+    text-align: left;
+    color: #9772A9;
+    font-weight: bold;
+    font-size: 18px;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.playlist-title {
+    vertical-align: middle;
+    text-align: left;
+    color: #9772A9;
+    font-weight: bold;
+    font-size: 18px;
+    display: inline-block;
+    white-space: nowrap;
+    width: 15em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.song-name-album {
+    display: inline-block;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: 15em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.music-title {
+    vertical-align: middle;
+    text-align: left;
+    color: #9772A9;
+    font-weight: bold;
+    font-size: 18px;
+    display: block;
+    white-space: nowrap;
+    width: 15em;
+    overflow: hidden;
+    ttext-overflow: ellipsis;
+}
+
+.album-title {
+    vertical-align: middle;
+    text-align: left;
+    color: #696969;
+    font-size: 15px;
+    font-weight: bold;
+    display: block;
+    white-space: nowrap;
+    width: 15em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+img.alb-cover {
+    width: 20%;
+    height: 80%;
+    vertical-align: middle;
+    display: inline-block;
+    padding-right: 5%;
+    border-radius: 3px;
+    padding-bottom: 2%;
+    padding-top: 2%;
+}
+
+.playlist-select {
+    display: inline-block;
+    position: absolute;
+    top: 43%;
+    right: 4%;
+}
+
+.song-select {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.song-play {
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 54%;
+    padding-right: 2%;
+}
+
+
+/* Glyphicon Size */
+
+.glyphicon {
+    font-size: 40px;
+    color: black;
+}
+
+.glyphicon.glyphicon-chevron-right {
+    font-size: 30px;
+    color: #696969;
+}
+
+.glyphicon.glyphicon-plus {
+    font-size: 18px;
+    color: white;
+}
+
+.glyphicon.glyphicon-plus-sign {
+    font-size: 30px;
+    color: #696969;
+}
+
+.glyphicon.glyphicon-play {
+    font-size: 30px;
+    color: #696969;
+}
+
+.glyphicon.glyphicon-th-list {
+    color: #9772A9;
+}
+
+.glyphicon.glyphicon-music {
+    color: black;
+}
+
+.glyphicon.glyphicon-search {
+    color: black;
+}
+
+li.list-item:active {
+    background-color: #8A2BE2;
+}
+
+#load-playlists p {
+    color: #9772A9;
+}
+
+#load-library p {
+    color: black;
+}
+
+#load-search p {
+    color: black;
+}
+
+.sort-by-artist {
+    margin-right: 5%;
+    margin-top: 2%;
+    margin-bottom: 3%;
+    margin-left: 32%;
+    display: inline-block;
+    vertical-align: middle;
+    background-color: #800080;
+    color: white;
+    font-size: 26px;
+    border-radius: 7px;
+    padding-right: 1%;
+    padding-left: 1%;
+}
+
+.sort-by-title {
+    margin-top: 2%;
+    margin-bottom: 3%;
+    display: inline-block;
+    vertical-align: middle;
+    background-color: #800080;
+    color: white;
+    font-size: 26px;
+    border-radius: 7px;
+    padding-right: 2%;
+    padding-left: 2%;
+}
+
+
+/* The Modal (background) */
+
+.addsong-modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+
+/* Modal Content/Box */
+
+.modal-content {
+    background-color: #E8E0F4;
+    margin: 15% auto;
+    /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 70%;
+    /* Could be more or less, depending on screen size */
+    height: 60%;
+}
+
+
+/* The Close Button */
+
+.close {
+    color: #800080;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+h4.modal-title {
+    text-align: center;
+    color: #696969;
+}
+
+.search-field-container {
+    padding: 15px;
+    padding-right: 0px;
+    padding-left: 0px;
+    width: 100%;
+    vertical-align: middle;
+}
+
+.search-field {
+    margin-top: 1%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 100%;
+    vertical-align: middle;
+    background-color: #D3D3D3;
+    border-radius: 6px;
+    font-size: 24px;
+    align: middle;
+}
+
+h3.playlist-page-title {
+    text-align: center;
+    color: #800080;
+    font-style: bold;
+    font-size: 30px;
+}
+
+
+/*MEDIAN QUERIES*/
+
+@media only screen and (max-width: 450px) {
+    .list-item {
+        position: relative;
+    }
+    li.list-item {
+        border-bottom: 2px solid #bbb;
+        padding-right: 5%;
+        padding-left: 5%;
+    }
+    .playlist-title {
+        vertical-align: middle;
+        text-align: left;
+        color: #9772A9;
+        font-weight: bold;
+        display: inline-block;
+        font-size: 12px;
+    }
+    img.alb-cover {
+        width: 20%;
+        height: 80%;
+        vertical-align: middle;
+        display: inline-block;
+        padding-right: 5%;
+        border-radius: 3px;
+        padding-bottom: 2%;
+        padding-top: 2%;
+    }
+    .playlist-select {
+        display: inline-block;
+        position: absolute;
+        top: 33%;
+        right: 5%;
+    }
+    /* Glyphicon Size */
+    .glyphicon {
+        font-size: 25px;
+        color: black;
+    }
+    .glyphicon.glyphicon-chevron-right {
+        font-size: 20px;
+        color: #696969;
+    }
+    .glyphicon.glyphicon-plus {
+        font-size: 11px;
+        color: white;
+    }
+    #add-playlist-button {
+        padding: 12px;
+    }
+    .glyphicon.glyphicon-play {
+        font-size: 16px;
+        color: #696969;
+    }
+    .glyphicon.glyphicon-plus-sign {
+        font-size: 16px;
+        color: #696969;
+    }
+    .glyphicon.glyphicon-th-list {
+        color: #9772A9;
+    }
+    .glyphicon.glyphicon-music {
+        color: black;
+    }
+    .glyphicon.glyphicon-search {
+        color: black;
+    }
+    /*/////////////////////////////////*/
+    .song-name-album {
+        display: inline-block;
+        vertical-align: middle;
+        white-space: nowrap;
+        width: 10em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .music-title {
+        vertical-align: middle;
+        text-align: left;
+        color: #9772A9;
+        font-weight: bold;
+        font-size: 12px;
+        display: block;
+        white-space: nowrap;
+        width: 12em;
+        overflow: hidden;
+        ttext-overflow: ellipsis;
+    }
+    .album-title {
+        vertical-align: middle;
+        text-align: left;
+        color: #696969;
+        font-size: 12px;
+        font-weight: bold;
+        display: block;
+        white-space: nowrap;
+        width: 15em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .song-select {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .song-play {
+        display: inline-block;
+        vertical-align: middle;
+        padding-left: 21%;
+        padding-right: 2%;
+    }
+    li.list-item:active {
+        background-color: #8A2BE2;
+    }
+    #load-playlists p {
+        color: #9772A9;
+        font-size: 14px;
+    }
+    #load-library p {
+        color: black;
+        font-size: 14px;
+    }
+    #load-search p {
+        color: black;
+        font-size: 14px;
+    }
+    .sort-by-artist {
+        margin-right: 10%;
+        margin-top: 2%;
+        margin-bottom: 3%;
+        margin-left: 17%;
+        display: inline-block;
+        vertical-align: middle;
+        background-color: #800080;
+        color: white;
+        font-size: 16px;
+        border-radius: 7px;
+        padding-right: 1%;
+        padding-left: 1%;
+    }
+    .sort-by-title {
+        margin-top: 2%;
+        margin-bottom: 3%;
+        display: inline-block;
+        vertical-align: middle;
+        background-color: #800080;
+        color: white;
+        font-size: 16px;
+        border-radius: 7px;
+        padding-right: 2%;
+        padding-left: 2%;
+    }
+    /* The Modal (background) */
+    .addsong-modal {
+        display: none;
+        /* Hidden by default */
+        position: fixed;
+        /* Stay in place */
+        z-index: 1;
+        /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%;
+        /* Full width */
+        height: 100%;
+        /* Full height */
+        overflow: auto;
+        /* Enable scroll if needed */
+        background-color: rgb(0, 0, 0);
+        /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.4);
+        /* Black w/ opacity */
+    }
+    /* Modal Content/Box */
+    .modal-content {
+        background-color: #E8E0F4;
+        margin: 15% auto;
+        /* 15% from the top and centered */
+        padding: 20px;
+        border: 1px solid #888;
+        width: 70%;
+        /* Could be more or less, depending on screen size */
+        height: 60%;
+    }
+    /* The Close Button */
+    .close {
+        color: #800080;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    h4.modal-title {
+        text-align: center;
+        color: #696969;
+        padding-top: 5%;
+    }
+    .search-field-container {
+        padding: 5px;
+        padding-right: 0px;
+        padding-left: 0px;
+        width: 100%;
+        vertical-align: middle;
+    }
+    .search-field {
+        margin-top: 1%;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        padding-left: 0px;
+        padding-right: 0px;
+        width: 100%;
+        vertical-align: middle;
+        background-color: #D3D3D3;
+        border-radius: 6px;
+        font-size: 14px;
+        align: middle;
+    }
+    h3.playlist-page-title {
+        text-align: center;
+        color: #800080;
+        font-style: bold;
+        font-size: 16px;
+    }
+    .modal-list-item-playlist-title {
+        width: 30%;
+        padding-top: 10%;
+        padding-bottom: 10%;
+        vertical-align: middle;
+        text-align: left;
+        color: #9772A9;
+        font-weight: bold;
+        font-size: 12px;
+        display: inline-block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}

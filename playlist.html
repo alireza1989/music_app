@@ -1,0 +1,158 @@
+<!-- PlayList html -->
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title> Playlist-Mock </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <div class="container-fluid" id="nav-body">
+        <header>
+            <nav>
+                <ul class="nav navbar-default navbar-fixed-top centered">
+                    <li>
+                        <a href="#" id="load-library"> <span class="glyphicon glyphicon-music"></span>
+                            <p>Library</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" id="load-playlists"> <span class="glyphicon glyphicon-th-list"></span>
+                            <p>Playlists</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" id="load-search"> <span class="glyphicon glyphicon-search"></span>
+                            <p> Search</p>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+
+
+        <div class="tab-content" id="page-body">
+
+
+            <div id="library-tab">
+                <div class="container">
+                    <button class="sort-by-artist" id='sort-by-artist'> Sort by artist </button>
+                    <button class="sort-by-title" id='sort-by-title'> Sort by title </button>
+                </div>
+                <div id='song-list'>
+
+                </div>
+
+                <div  class='addsong-modal' id='library-addsong-modal'>
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h4 class='modal-title'>Choose playlist</h4>
+                    <div id='library-modal-playlists'>
+
+                    </div>
+                </div>
+
+                </div>
+            </div>
+
+            <div class="Playlists" id="playlist-tab">
+
+                <div class="container-fluid" id="add-playlist-button">
+                    <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#add-song-modal"> <span class="glyphicon glyphicon-plus"></span> Playlist </button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="add-song-modal" role="dialog">
+                      <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Add A Playlist</h4>
+                          </div>
+                          <div class="modal-body">
+                            <input type='text' name='playlist_name' id='form-playlist-name' autofocus ></input>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" id="form-playlist-add" data-dismiss="modal">Add Playlist</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                </div>
+                <div id='playlists-list'>
+
+                </div>
+
+                <div  class='addsong-modal' id='playlists-addsong-modal'>
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h4 class='modal-title'>Choose playlist</h4>
+                    <div id='playlists-modal-playlists'>
+
+                    </div>
+                </div>
+
+                </div>
+
+
+            </div>
+
+            <div id="search-tab">
+                <div class="container">
+                    <div class="container search-field-container">
+                        <input class="search-field" type="text" id='search' placeholder='     SEARCH'></input>
+                    </div>
+                    <div id='search-list'>
+
+                    </div>
+
+                    <div  class='addsong-modal' id='search-addsong-modal'>
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h4 class='modal-title'>Choose playlist</h4>
+                        <div id='search-modal-playlists'>
+
+                        </div>
+                    </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Loading Javascript and CSS files-->
+
+    <!-- CSS reset -->
+    <link rel="stylesheet" href="reset.css">
+
+    <!-- JQUERY -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="playlist.css">
+
+    <!-- Load data file and exercise JS file -->
+    <!-- <script src="music-data.js"></script> -->
+    <script src="music-app.js"></script>
+</body>
+
+</html>
