@@ -1,7 +1,8 @@
-I developed on these versions:
 
 NPM:  
   4.1.2
 
 NODE:
   V6.9.4
+
+MUSIC PLAYER APPLICATION V 0.0.1.7
