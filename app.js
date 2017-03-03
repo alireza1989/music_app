@@ -199,9 +199,9 @@ var getPlaylistsData = function(request, response) {
 
                 playlistData.songs = songs_array;
                 playlists_object.push(playlistData);
+2
 
-
-                if (count === 3) {
+                if (count === playlists.length) {
                     // console.log(playlists_object);
                     response.end(JSON.stringify({'playlists': playlists_object}));
                 }
@@ -243,7 +243,6 @@ var addSong = function(request, response){
     models.Playlist.findById(playlist_id)
         .then(function(playlist){
 
-            console.log(playlist_id, song_id);
             playlist.addSong(song_id).then(function(){
                 response.statusCode = 200;
                 response.end();
@@ -253,6 +252,21 @@ var addSong = function(request, response){
 
 
 // DELETE SONG FROM A PLAYLIST
+var removeSong = function(request, response){
+
+    var song_id = request.body.song;
+    var playlist_id = request.params['id'];
+
+    models.Playlist.findById(playlist_id)
+        .then(function(playlist){
+
+            playlist.removeSong(song_id).then(function(){
+                response.statusCode = 200;
+                response.end();
+            });
+        })
+}
+
 
 
 // HANDLE REQUESTS USING express
@@ -282,6 +296,8 @@ app.get('/api/playlists', function(request, response){ getPlaylistsData(request,
 app.post('/api/playlists', function(request, response){ addPlaylist(request, response); });
 
 app.post('/api/playlists/:id/', function(request, response){ addSong(request, response); });
+
+app.delete('/playlists/:id/', function(request, response){ removeSong(request, response); });
 
 
 // Create a server and provide it a callback to be executed for every HTTP request

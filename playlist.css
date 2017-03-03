@@ -188,8 +188,14 @@ img.alb-cover {
 .song-play {
     display: inline-block;
     vertical-align: middle;
-    padding-left: 54%;
-    padding-right: 2%;
+    padding-left: 42%;
+    padding-right: 3%;
+}
+
+.song-remove {
+  display: inline-block;
+  vertical-align: middle;
+  padding-right: 3%;
 }
 
 
@@ -216,6 +222,11 @@ img.alb-cover {
 }
 
 .glyphicon.glyphicon-play {
+    font-size: 30px;
+    color: #696969;
+}
+
+.glyphicon.glyphicon-remove-circle {
     font-size: 30px;
     color: #696969;
 }
@@ -421,6 +432,10 @@ h3.playlist-page-title {
         font-size: 16px;
         color: #696969;
     }
+    .glyphicon.glyphicon-remove-circle {
+        font-size: 16px;
+        color: #696969;
+    }
     .glyphicon.glyphicon-plus-sign {
         font-size: 16px;
         color: #696969;
@@ -474,9 +489,16 @@ h3.playlist-page-title {
     .song-play {
         display: inline-block;
         vertical-align: middle;
-        padding-left: 21%;
-        padding-right: 2%;
+        padding-left: 14%;
+        padding-right: 3%;
     }
+
+    .song-remove {
+      display: inline-block;
+      vertical-align: middle;
+      padding-right: 3%;
+    }
+
     li.list-item:active {
         background-color: #8A2BE2;
     }
