@@ -39,4 +39,20 @@ models.sequelize.sync({force: true}).then(function(){
 
   });
 
+  fs.readFile('./users.json', function(err, data){
+    var users_data = JSON.parse(data);
+    var users = users_data['users'];
+
+    users.forEach(function(user){
+      models.User.create({
+        username: user.username,
+        password: user.password,
+      })
+      .then(function(userInstance){
+        userInstance.setPlaylists(user.playlists);
+      });
+    });
+
+  });
+
 });

@@ -16,14 +16,18 @@ module.exports = function(sequelize, DataType) {
             type: DataType.INTEGER,
             field: 'duration'
         }
-    },{
-        timestamps: false,
-        classMethods: {
-            associate: function(models) {
-                Song.belongsToMany(models.Playlist, {through: 'Songs_Playlists', foreignKey: 'song_id', timestamps: false})
-            }
+    }, {
+    timestamps: false,
+    classMethods: {
+        associate: function(models) {
+            Song.belongsToMany(models.Playlist, {
+                through: 'Songs_Playlists',
+                foreignKey: 'song_id',
+                timestamps: false
+            })
         }
-    });
+    }
+});
 
     return Song;
 };
