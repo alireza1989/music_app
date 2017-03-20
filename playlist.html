@@ -46,15 +46,15 @@
 
                 </div>
 
-                <div  class='addsong-modal' id='library-addsong-modal'>
-                <!-- Modal content -->
-                <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <h4 class='modal-title'>Choose playlist</h4>
-                    <div id='library-modal-playlists'>
+                <div class='addsong-modal' id='library-addsong-modal'>
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h4 class='modal-title'>Choose playlist</h4>
+                        <div id='library-modal-playlists'>
 
+                        </div>
                     </div>
-                </div>
 
                 </div>
             </div>
@@ -65,39 +65,39 @@
                     <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#add-song-modal"> <span class="glyphicon glyphicon-plus"></span> Playlist </button>
                     <!-- Modal -->
                     <div class="modal fade" id="add-song-modal" role="dialog">
-                      <div class="modal-dialog">
+                        <div class="modal-dialog">
 
-                        <!-- Modal content-->
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Add A Playlist</h4>
-                          </div>
-                          <div class="modal-body">
-                            <input type='text' name='playlist_name' id='form-playlist-name' autofocus ></input>
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" id="form-playlist-add" data-dismiss="modal">Add Playlist</button>
-                            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                          </div>
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Add A Playlist</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <input type='text' name='playlist_name' id='form-playlist-name' autofocus></input>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" id="form-playlist-add" data-dismiss="modal">Add Playlist</button>
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+
                         </div>
-
-                      </div>
                     </div>
                 </div>
                 <div id='playlists-list'>
 
                 </div>
 
-                <div  class='addsong-modal' id='playlists-addsong-modal'>
-                <!-- Modal content -->
-                <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <h4 class='modal-title'>Choose playlist</h4>
-                    <div id='playlists-modal-playlists'>
+                <div class='addsong-modal' id='playlists-addsong-modal'>
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h4 class='modal-title'>Choose playlist</h4>
+                        <div id='playlists-modal-playlists'>
 
+                        </div>
                     </div>
-                </div>
 
                 </div>
 
@@ -113,15 +113,15 @@
 
                     </div>
 
-                    <div  class='addsong-modal' id='search-addsong-modal'>
-                    <!-- Modal content -->
-                    <div class="modal-content">
-                        <span class="close">&times;</span>
-                        <h4 class='modal-title'>Choose playlist</h4>
-                        <div id='search-modal-playlists'>
+                    <div class='addsong-modal' id='search-addsong-modal'>
+                        <!-- Modal content -->
+                        <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <h4 class='modal-title'>Choose playlist</h4>
+                            <div id='search-modal-playlists'>
 
+                            </div>
                         </div>
-                    </div>
 
                     </div>
 
@@ -150,6 +150,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="playlist.css">
 
+    <!-- Load Socket.io lib for Real-time communication -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
     <!-- Load data file and exercise JS file -->
     <!-- <script src="music-data.js"></script> -->
     <script src="music-app.js"></script>

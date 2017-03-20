@@ -47,7 +47,11 @@ $.getJSON('/api/songs', function(data) {
 
 var application = function() {
 
-
+    /////////////////////////////////////////////////////
+    //                 Sucket.io
+    /////////////////////////////////////////////////////
+    // var socket = io('/playlists');
+     
     /////////////////////////////////////////////////////
     //                 The Tab View JS
     /////////////////////////////////////////////////////
@@ -575,7 +579,9 @@ var application = function() {
                 if (playlists_data.playlists[i].name == playlist_name) {
 
                     // matching_playlist = playlists_data[i];
-                    var songs_in_a_playlist = '<h3 class="playlist-page-title">' + playlists_data.playlists[i].name + '</h3><ul id="music-list">';
+                    var songs_in_a_playlist = '<h3 class="playlist-page-title">' + playlists_data.playlists[i].name +
+                        '</h3> <br> <div id="add-user-div"><button type="button" class="btn btn-info btn-sm" id ="add-user"> + user </button></div>' +
+                        '<ul id="music-list">';
 
                     for (j in playlists_data.playlists[i].songs) {
 
@@ -644,4 +650,18 @@ var application = function() {
     $(document.getElementById('form-playlist-add')).on('click', function() {
         addPlayList();
     });
+
+    // Handdle the add user to a playlist Functionality
+    var add_user_to_playlist = function() {
+        if (event.target.id == 'add-user') {
+
+            $.get("/api/users", function(data) {
+                console.log(data);
+            });
+
+        }
+    }
+
+    // Eventlistener for add user button
+    document.addEventListener('click', add_user_to_playlist, false);
 }

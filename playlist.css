@@ -376,6 +376,47 @@ h3.playlist-page-title {
     font-size: 30px;
 }
 
+.login{
+  text-align: center;
+  color: #800080;
+  font-style: bold;
+  background-color: #E8E0F4;
+  align-items: center;
+}
+
+label.login{
+
+    vertical-align: middle;
+    width: 50%;
+    color: #800080;
+}
+
+.login .login-input{
+    vertical-align: middle;
+    width: 50%;
+    color: #800080;
+
+}
+
+form.login{
+    background-color: #E8E0F4;
+}
+
+
+/* Add user-btn */
+#add-user-div{
+    vertical-align: middle;
+    align-items: center;
+    padding-left: 60px;
+    padding-bottom: 25px;
+}
+
+#add-user{
+  vertical-align: middle;
+  width: 50%;
+  align-items: center;
+  margin-left: 50px;
+}
 
 /*MEDIAN QUERIES*/
 
