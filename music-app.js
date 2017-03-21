@@ -50,8 +50,8 @@ var application = function() {
     /////////////////////////////////////////////////////
     //                 Sucket.io
     /////////////////////////////////////////////////////
-    // var socket = io('/playlists');
-     
+    var socket = io('/');
+
     /////////////////////////////////////////////////////
     //                 The Tab View JS
     /////////////////////////////////////////////////////
@@ -348,9 +348,11 @@ var application = function() {
             'song': song_id
         };
 
+        targetPlaylist = playlist_selected_name;
         $.post('api/playlists/' + playlist_id, addSongObj, function(responseText) {
-            console.log(responseText);
+            socket.emit('music-added', targetPlaylist);
         });
+
 
     }
 
@@ -499,6 +501,8 @@ var application = function() {
 
                         }
                     }
+
+                    socket.emit('music-deleted', playlist_selected_name);
                 }
             });
 
@@ -651,17 +655,155 @@ var application = function() {
         addPlayList();
     });
 
-    // Handdle the add user to a playlist Functionality
+
+    /////////////////////////////////////////////////////
+    //           Add user to Playlist Functionality
+    /////////////////////////////////////////////////////
+    // make the modal function
+    function users_modal(data) {
+        var users_modal_users = document.getElementById('users-modal-users');
+        window.adduser_modal = document.getElementById('adduser-modal');
+        window.userData = data;
+        adduser_modal.style.display = "block";
+        var modal_users = '<ul>';
+
+        for (i in data.users) {
+
+            modal_users += '<li class="container list-item modal-list-item users">' + '<span class="modal-list-item-playlist-title">' +
+                data.users[i].username + '</span>' + '</li>';
+        }
+
+        modal_users += '</ul>';
+        users_modal_users.innerHTML = modal_users;
+
+        // Close the modal when click on X
+        adduser_modal.getElementsByClassName('close')[0].onclick = function() {
+            adduser_modal.style.display = "none";
+        }
+
+
+    }
+
+
+
     var add_user_to_playlist = function() {
+
         if (event.target.id == 'add-user') {
 
             $.get("/api/users", function(data) {
-                console.log(data);
+                //console.log(data);
+                window.userData = data;
+                users_modal(data);
+
             });
 
         }
+
+        if (event.target.className == 'container list-item modal-list-item users') {
+
+
+            var userSelected = event.target.innerText;
+            var userSelectedId;
+            for (i in userData.users){
+                if (userData.users[i].username === userSelected){
+                    userSelectedId = userData.users[i].id;
+                }
+            }
+
+            var addUserObj = {'user': userSelectedId };
+            var playlist_name = document.getElementsByClassName('playlist-page-title')[0].innerText;
+            var playlist_id;
+            for (i in playlists_data.playlists) {
+                if (playlists_data.playlists[i].name == playlist_name) {
+                    playlist_id = playlists_data.playlists[i].id;
+                }
+            }
+
+            $.post('api/playlists/'+ playlist_id +'/users', addUserObj, function(responseText) {
+            });
+
+            adduser_modal.style.display = "none";
+
+        }
+
     }
 
     // Eventlistener for add user button
     document.addEventListener('click', add_user_to_playlist, false);
+
+
+
+
+
+    // Front end Socket.io Listener
+
+    // leper function that reloads the playlist
+    var reload_list = function(playListName) {
+
+
+        //====================
+        for (i in playlists_data.playlists) {
+            if (playlists_data.playlists[i].name == playListName) {
+
+                // matching_playlist = playlists_data[i];
+                var songs_in_a_playlist = '<h3 class="playlist-page-title">' + playlists_data.playlists[i].name +
+                    '</h3> <br> <div id="add-user-div"><button type="button" class="btn btn-info btn-sm" id ="add-user"> + user </button></div>' +
+                    '<ul id="music-list">';
+
+                for (j in playlists_data.playlists[i].songs) {
+
+                    var song = songs_data.songs.find(find_song);
+                    songs_in_a_playlist += '<li class="container list-item"><img src="album_cover.jpg" alt="album cover" class="alb-cover">' +
+                        '<span class="song-name-album"><span class="music-title">' +
+                        song.title + '</span><span class="album-title">' + song.artist +
+                        '</span></span><span class="glyphicon glyphicon-play song-play">  </span>' +
+                        '<span class= "glyphicon glyphicon-remove-circle song-remove"> </span>' +
+                        '<span class="glyphicon glyphicon-plus-sign song-select">  </span>';
+                }
+
+                songs_in_a_playlist += '</ul>'
+            }
+
+            document.getElementById('playlists-list').innerHTML = songs_in_a_playlist;
+        }
+
+        //===================
+
+
+    }
+    // add music
+    socket.on('music-added', function(playListName) {
+
+        // update the local memory
+        $.get("/api/playlists", function(data) {
+            var playlistArray = data;
+            database['playlists'] = playlistArray;
+            playlists_data = database.playlists;
+
+            if (document.getElementsByClassName('playlist-page-title')[0].innerText === playListName) {
+                reload_list(playListName);
+            }
+
+        });
+
+    });
+
+    // remove music
+    socket.on('music-deleted', function(playListName) {
+
+        // update the local memory
+        $.get("/api/playlists", function(data) {
+            var playlistArray = data;
+            database['playlists'] = playlistArray;
+            playlists_data = database.playlists;
+
+            if (document.getElementsByClassName('playlist-page-title')[0].innerText === playListName) {
+                reload_list(playListName);
+            }
+
+        });
+
+    });
+
+
 }

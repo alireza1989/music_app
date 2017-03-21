@@ -312,6 +312,7 @@ li.list-item:active {
 }
 
 
+
 /* Modal Content/Box */
 
 .modal-content {
@@ -416,6 +417,10 @@ form.login{
   width: 50%;
   align-items: center;
   margin-left: 50px;
+}
+
+.users{
+
 }
 
 /*MEDIAN QUERIES*/
@@ -602,6 +607,8 @@ form.login{
         background-color: rgba(0, 0, 0, 0.4);
         /* Black w/ opacity */
     }
+
+
     /* Modal Content/Box */
     .modal-content {
         background-color: #E8E0F4;
@@ -670,5 +677,9 @@ form.login{
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+    }
+
+    .users{
+
     }
 }

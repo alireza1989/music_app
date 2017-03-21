@@ -1,12 +1,11 @@
 // Import the http library
 
-// var app = require('express')();
-// var http = require('http').Server(app);
-// var io = require('socket.io')(http);
-
-
-
+var app = require('express')();
 var http = require('http').Server(app);
+var io = require('socket.io')(http);
+
+
+//var http = require('http').Server(app);
 var file_system = require('fs');
 var sqlite3 = require('sqlite3').verbose();
 var db = new sqlite3.Database('music.db');
@@ -20,10 +19,10 @@ var cookieParser = require('cookie-parser');
 var crypto = require('crypto');
 
 // Socket.io
-var io = require('socket.io')(http);
+//var io = require('socket.io')(http);
 
 
-var app = express();
+//var app = express();
 app.use(bodyParser.json()); // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({ // to support URL-encoded bodies
     extended: true
@@ -261,6 +260,8 @@ var addPlaylist = function(request, response) {
             response.end(JSON.stringify(newPlaylist));
         })
 
+
+
 }
 
 var idExists = function(pl_ids, playlist_id) {
@@ -442,7 +443,7 @@ var getUsersList = function(request, response) {
 
     models.User.findAll({
         attributes: ['id', 'username']
-    }).then(function(users){
+    }).then(function(users) {
         var usersArray = users.map(function(user) {
             return user.get({
                 plain: true
@@ -456,6 +457,63 @@ var getUsersList = function(request, response) {
         response.end(JSON.stringify(usersObj));
 
     });
+}
+
+
+
+// Add a user to a playlist in DB
+var addUserToPlaylist = function(request, response) {
+    console.log(request.body);
+    var userId = request.body.user;
+    var playlist_id = request.params['id'];
+
+    //////////////////////////////////////////
+    // find the user id from sessionKey
+    models.Session.findOne({
+        where: {
+            sessionKey: request.cookies.sessionToken
+        }
+    }).then(function(session) {
+
+        var userID = session.sessionUser;
+
+        models.User.findOne({
+            where: {
+                id: userID
+            }
+        }).then(function(userInstance) {
+
+            userInstance.getPlaylists().then(function(playlistsInstance) {
+
+                var pl_ids = [];
+                playlistsInstance.forEach(function(playlistInstance) {
+                    pl_ids.push(playlistInstance.id);
+                });
+
+
+                if (idExists(pl_ids, playlist_id)) {
+                    models.User.findById(userId)
+                        .then(function(user) {
+                            user.addPlaylist(playlist_id).then(function() {
+                                response.statusCode = 200;
+                                response.end();
+                            });
+                        })
+                } else {
+
+                    response.statusCode = 403;
+                    response.end();
+
+                }
+
+            });
+        });
+
+    });
+
+    ////////////////////////////////////////
+
+
 }
 
 
@@ -490,6 +548,20 @@ app.use(function(request, response, next) {
     }
 });
 
+
+// Socketio handdling the real time
+io.on('connection', function(socket) {
+    // Socket for musci added to a playlist
+    socket.on('music-added', function(playlistsName) {
+        socket.broadcast.emit('music-added', playlistsName);
+    });
+
+    // Socket for musci removed from a playlist
+    socket.on('music-deleted', function(playlistsName) {
+        socket.broadcast.emit('music-deleted', playlistsName);
+    });
+
+});
 
 
 
@@ -553,6 +625,7 @@ app.post('/api/playlists', function(request, response) {
 
 app.post('/api/playlists/:id/', function(request, response) {
     addSong(request, response);
+
 });
 
 app.delete('/playlists/:id/', function(request, response) {
@@ -563,13 +636,17 @@ app.get('/api/users/', function(request, response) {
     getUsersList(request, response);
 });
 
+app.post('/api/playlists/:id/users', function(request, response) {
+    console.log(request);
+    addUserToPlaylist(request, response);
+});
 
 
 // Create a server and provide it a callback to be executed for every HTTP request
 // coming into localhost:3000.
 
 models.sequelize.sync().then(function() {
-    app.listen(3000, function() {
+    http.listen(3000, function() {
         console.log('Example app listening on port 3000! ');
         console.log('listening on *:3000');
     });
